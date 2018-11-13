@@ -1,0 +1,22 @@
+.all{
+    width: 100vw;
+    height: 5vh;
+    background-color: darkblue;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+.button-nav{
+    width: 100vw;
+    height: 5vh;
+    background-color: purple;
+}
+.these{
+    width: 5vw;
+    margin-right: 2vw;
+    margin-top: 1vh;
+    height: 2vh;
+    background-color: darkblue;
+    text-align: center;
+    color: white;
+}
