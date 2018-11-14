@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FrontService } from '../../front.service'
+import { FormControl, FormGroup } from '@angular/forms';
+import { getNumberOfCurrencyDigits } from '../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-front',
@@ -8,20 +10,41 @@ import { FrontService } from '../../front.service'
 })
 export class FrontComponent implements OnInit {
 
-  info$
+
+  Search = new FormGroup ({
+    term: new FormControl(''),
+    location: new FormControl(''),
+    price: new FormControl(''),
+  })
+
+  info;
+  data;
+  ndata;
+  number = Math.floor(Math.random() * 5);
 
   constructor(
-    private front: FrontService
+    private fronts: FrontService
   ) { }
 
   ngOnInit() {
   }
 
-  fetch(){
-    this.front.fetch().subscribe(front => {
-      this.info$ = front
-      console.log("here is the info", this.info$)
+  fetch(): void{
+    let items = this.Search.value
+    let term = items.term
+    let location = items.location
+    let price = items.price
+    this.fronts.fetch(term, location, price).subscribe(infos => {
+      this.info = infos
+      this.data = this.info.businesses
+      this.ndata = this.data[this.number]
+      console.log('im here', this.number)
+      console.log("here is the info", this.ndata)
     })
+  }
+
+  reload(){
+    location.reload();
   }
 
 }

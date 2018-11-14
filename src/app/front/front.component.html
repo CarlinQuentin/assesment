@@ -1,4 +1,39 @@
 <div class='body'>
-  <button (click)="fetch()">Get Results</button>
+  <div class='nenav'>
+    <form [formGroup]='Search' (ngSubmit)='fetch()'>
+      <input type="text" placeholder="Term" formControlName='term' class='in'>
+      <input type="text" placeholder="Location" formControlName='location' class='in'>
+      <select formControlName='price' class='in2'>
+          <option value='$'>$</option>
+          <option value='$$'>$$</option>
+          <option value='$$$'>$$$</option>
+          <option value='$$$$'>$$$$</option>
+        </select>
+      <button type='submit' [disabled]='!Search.valid' class='in2'>Search</button>
+      <button (click)='reload()' class='in2'>reload page</button>
+    </form>
+    <!-- <ul class='grid'>
+      <li *ngFor="let dat of ndata" class='reveal'>
+        <h4>Location: {{ dat.location.display_address }}</h4>
+        <h4>Name: {{ dat.name }}</h4>
+        <h4>Rating: {{  dat.rating }} ☆ </h4>
+        <h4>Contact: {{  dat.display_phone }}</h4>
+        <h4>Price: {{  dat.price }} </h4>
+        <h4>Closed?: {{ dat.is_closed }} </h4>
+        <img src="{{ dat.image_url }}" class='imgs' >
+      </li>
+    </ul> -->
+    <ul  *ngIf='ndata'>
+      <li>
+        <h4>Location: {{ ndata.location.display_address}}</h4>
+        <h4>Name: {{ ndata.name }}</h4>
+        <h4>Rating: {{  ndata.rating }} ☆ </h4>
+        <h4>Contact: {{  ndata.display_phone }}</h4>
+        <h4>Price: {{  ndata.price }} </h4>
+        <h4>Closed?: {{ ndata.is_closed }} </h4>
+        <img src="{{ ndata.image_url }}" class='imgs' >
+      </li>
+    </ul>
+  </div>
 </div>
 

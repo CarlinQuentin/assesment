@@ -1,8 +1,29 @@
-.body {
-    background-image: url("https://images.unsplash.com/photo-1520176501380-9a174bf7c783?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=90f43634fbe503ba1faaece1952d9402&auto=format&fit=crop&w=634&q=80");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 0 0 0 0;
-    height: 100vh;
+
+.list{
+    color: black;
+}
+.reveal{
+    color: black;
+}
+
+.in{
+    height: 2vh;
+    margin: 3%;
+    font-size: 2vh;
+}
+
+.in2{
+    height: 5%;
+    margin: 3%;
+    font-size: 2vh;
+}
+
+.imgs{
+    height: 200px;
+    width: 300px
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
 }
