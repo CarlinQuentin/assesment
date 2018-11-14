@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, getModuleFactory } from '@angular/core';
 import { FrontService } from '../../front.service'
 import { FormControl, FormGroup } from '@angular/forms';
 import { getNumberOfCurrencyDigits } from '../../../node_modules/@angular/common';
@@ -20,7 +20,7 @@ export class FrontComponent implements OnInit {
   info;
   data;
   ndata;
-  number = Math.floor(Math.random() * 5);
+  number;
 
   constructor(
     private fronts: FrontService
@@ -34,11 +34,12 @@ export class FrontComponent implements OnInit {
     let term = items.term
     let location = items.location
     let price = items.price
+    let number = Math.floor(Math.random() * 10);
     this.fronts.fetch(term, location, price).subscribe(infos => {
       this.info = infos
       this.data = this.info.businesses
-      this.ndata = this.data[this.number]
-      console.log('im here', this.number)
+      this.ndata = this.data[number]
+      console.log('im here', number)
       console.log("here is the info", this.ndata)
     })
   }

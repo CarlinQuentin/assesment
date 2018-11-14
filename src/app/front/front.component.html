@@ -4,10 +4,10 @@
       <input type="text" placeholder="Term" formControlName='term' class='in'>
       <input type="text" placeholder="Location" formControlName='location' class='in'>
       <select formControlName='price' class='in2'>
-          <option value='$'>$</option>
-          <option value='$$'>$$</option>
-          <option value='$$$'>$$$</option>
-          <option value='$$$$'>$$$$</option>
+          <option value='1'>$</option>
+          <option value='2'>$$</option>
+          <option value='3'>$$$</option>
+          <option value='4'>$$$$</option>
         </select>
       <button type='submit' [disabled]='!Search.valid' class='in2'>Search</button>
       <button (click)='reload()' class='in2'>reload page</button>
@@ -24,13 +24,13 @@
       </li>
     </ul> -->
     <ul  *ngIf='ndata'>
-      <li>
+      <li *ngIf='ndata.is_closed != true'>
         <h4>Location: {{ ndata.location.display_address}}</h4>
         <h4>Name: {{ ndata.name }}</h4>
-        <h4>Rating: {{  ndata.rating }} ☆ </h4>
+        <h4>Rating: {{  ndata.rating }}☆ </h4>
         <h4>Contact: {{  ndata.display_phone }}</h4>
         <h4>Price: {{  ndata.price }} </h4>
-        <h4>Closed?: {{ ndata.is_closed }} </h4>
+        <h4 *ngIf='ndata.transactions[1]'>Delivery: {{  ndata.transactions[1]}}, {{ndata.transactions[0]}}</h4>
         <img src="{{ ndata.image_url }}" class='imgs' >
       </li>
     </ul>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, getModuleFactory } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { Observable } from '../node_modules/rxjs';
@@ -21,9 +21,11 @@ export class FrontService {
       })
     }
     return this.http
-      .get(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}?${price}`, options)
-      .pipe(tap(info => console.log(info)))
-    
+      .get(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&price=${price}&limit=10&open_now=true`, options)
+      .pipe(tap(info => console.log('this info', info)
+      ))
   }
+  
+  
 
 }
